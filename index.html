@@ -1,0 +1,62 @@
+﻿<html>
+  <head>
+    <title>Web DB V2.0</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+    <p>
+      <table border=0>
+        <tr valign="top">
+        <td><image src="/images/customLogo.gif" width="200" hspace="10"></td>
+        <td>This web service is designed to work with <a
+href="https://groups.google.com/forum/?hl=en#!forum/ai4a">App Inventor
+for All</a> and the TinyWebDB component. The end-goal of this service is
+to communicate with a mobile app created with App Inventor.
+<br />
+<br />
+You can use it to give you a twdb server <b>and</b>
+to come up with your own server!</td>
+        </tr>
+      </table>
+</p>
+
+<p>
+    {% for greeting in greetings %}
+      {% if greeting.author %}
+        <b>{{ greeting.author }}</b> wrote:
+      {% else %}
+        An anonymous person wrote:
+      {% endif %}
+      <blockquote>{{ greeting.content|escape }}</blockquote>
+    {% endfor %}
+
+    <form action="/sign" method="post">
+      <div><textarea name="content" rows="3" cols="60"></textarea></div>
+      <div><input type="submit" value="Sign Guestbook"></div>
+    </form>
+</p>
+
+<p>
+    <a href="{{ url }}">{{ url_linktext }}</a>
+    </p>
+    
+<p>
+The page your are looking at is 
+a web page interface to the web service to help programmers with debugging. You
+can log in/out, leave a message in the guestbook and go to the <a href="/twdb">twdb</a> page and
+invoke the get and store operations by hand, view the existing entries and also delete individual entries.
+  </p>
+  
+  <p>
+  This server is based on the server Google/MIT built. It is updated to use Python 2.7, it uses templates
+  and you can use it to build your own server. 
+  <br />
+  <br />
+  More info on the 
+  <a target="_blank" href="https://sites.google.com/a/jsoft.com/appinventor/home/twdbv2-0">Jefferson Software's twdb info page</a>.
+  
+  
+  </p>
+  
+  </body>
+</html>

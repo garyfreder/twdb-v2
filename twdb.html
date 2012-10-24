@@ -1,0 +1,46 @@
+﻿<html>
+  <head>
+    <title>Web DB V2.0</title>
+    <link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+  <body>
+
+
+
+    <p> 
+      Available calls:
+      <ul>
+        <li><a href="/storeavalue">/storeavalue</a>: Stores a value, given a tag and a value</li>
+        <li><a href="/getvalue">/getvalue</a>: Retrieves the value stored under a given tag.  Returns the empty string if no value is stored</li>
+      </ul>
+    </p>
+    
+    <p><table border=1>
+      <tr>
+         <th>Tag</th>
+         <th>Value</th>
+         <th>Created (GMT)</th>
+      </tr>
+      {% for entry in entries %}      
+        <tr>
+            <td>{{ entry.tag }} <form action="/deleteentry" method="post"
+            enctype=application/x-www-form-urlencoded>
+	    <input type="hidden" name="entry_key_string" value="{{ entry.key() }}">
+	    <input type="hidden" name="tag" value="{{ entry.tag }}">
+            <input type="hidden" name="fmt" value="html">
+	    <input type="submit" style="background-color: red" value="Delete"></form></td>
+            <td>{{ entry.value }}</td>
+            <td>{{ entry.date.ctime() }}</td>
+        </tr>
+      {% endfor %}
+      </table>
+      
+      <p>      
+      <a href="/">
+  <i>Return to index page</i>
+  </a>
+  </p>
+
+  
+  </body>
+</html>
